@@ -1,0 +1,47 @@
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-in-out;
+}
+
+.pulse {
+    animation: pulse 0.5s ease-in-out;
+}
+
+.status-indicator.accelerating {
+    background-color: var(--success-color);
+}
+
+.status-indicator.holding {
+    background-color: var(--primary-color);
+}
+
+.status-indicator.braking {
+    background-color: var(--danger-color);
+}
+
+.status-indicator.cooling {
+    background-color: var(--warning-color);
+}
+
+.transition-all {
+    transition: all var(--transition-speed) ease-in-out;
+}

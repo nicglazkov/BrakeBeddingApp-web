@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brake Bedding Guide</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/modal.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Brake Bedding Guide</h1>
+            <nav>
+                <button id="settingsBtn" class="nav-button">Settings</button>
+                <button id="helpBtn" class="nav-button">Help</button>
+            </nav>
+        </header>
+
+        <main>
+            <div id="speedDisplay" class="speed-display">
+                <h2>Current Speed</h2>
+                <div class="speed-value">0 MPH</div>
+            </div>
+
+            <div id="stageProgress" class="stage-progress">
+                <h3>Progress</h3>
+                <div class="progress-text">Ready to start</div>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+
+            <div id="instructions" class="instructions">
+                <div class="instruction-text">Configure stages and press Start</div>
+                <div class="status-indicator"></div>
+            </div>
+
+            <div class="control-buttons">
+                <button id="startBtn" class="primary-button">Start Procedure</button>
+                <button id="pauseBtn" class="secondary-button" disabled>Pause</button>
+                <button id="resetBtn" class="secondary-button" disabled>Reset</button>
+            </div>
+        </main>
+
+        <!-- Settings Modal -->
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Configure Stages</h2>
+                    <button class="close-button">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="stageForm">
+                        <div class="form-group">
+                            <label for="numberOfStops">Number of Stops:</label>
+                            <input type="number" id="numberOfStops" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="startSpeed">Start Speed (MPH):</label>
+                            <input type="number" id="startSpeed" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="targetSpeed">Target Speed (MPH):</label>
+                            <input type="number" id="targetSpeed" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gapDistance">Gap Distance (miles):</label>
+                            <input type="number" id="gapDistance" step="0.1" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brakingIntensity">Braking Intensity:</label>
+                            <select id="brakingIntensity" required>
+                                <option value="LIGHT">Light braking</option>
+                                <option value="MODERATE">Moderate braking</option>
+                                <option value="FIRM">Firm braking</option>
+                                <option value="THRESHOLD">Threshold braking</option>
+                                <option value="ABS">ABS activation</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="primary-button">Add Stage</button>
+                    </form>
+
+                    <div class="stages-container">
+                        <h3>Configured Stages</h3>
+                        <div id="stagesList" class="stages-list"></div>
+                    </div>
+
+                    <div class="cooldown-section">
+                        <h3>Cooldown Stage</h3>
+                        <div class="form-group">
+                            <label for="cooldownDistance">Cooldown Distance (miles):</label>
+                            <input type="number" id="cooldownDistance" step="0.1" min="0">
+                        </div>
+                        <button id="addCooldownBtn" class="secondary-button">Add Cooldown Stage</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="saveStagesBtn" class="primary-button">Save Configuration</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Modal will be dynamically generated -->
+    </div>
+
+    <script src="scripts/models/Stage.js"></script>
+    <script src="scripts/models/Settings.js"></script>
+    <script src="scripts/SpeedTracker.js"></script>
+    <script src="scripts/StageManager.js"></script>
+    <script src="scripts/UIController.js"></script>
+    <script src="scripts/HelpGuide.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>
